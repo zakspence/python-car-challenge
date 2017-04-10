@@ -42,24 +42,21 @@ if __name__ == '__main__':
 
   car_types = dict()
   for make in makes:
-    print('in makes with {}'.format(make))
-    print('--------------------')
     car_types[make[1]] = {}
-    print(car_types[make[1]])
     for model in models:
-      print('in models with {}'.format(model))
-      print('--------------------')
       if model[2] == make[0]:
         car_types[make[1]][model[1]] = []
-        print(car_types[make[1]][model[1]])
         for car_color in available_car_colors:
-          print('in available_car_colors with {}'.format(car_color))
-          print('--------------------')
           if car_color[0] == model[0]:
             for color in colors:
-              print('in colors with {}'.format(color))
               if color[0] == car_color[1]:
-                print(car_types)
                 car_types[make[1]][model[1]].append(color[1])
 
-  print(car_types)
+  for make in car_types:
+    print(make)
+    print('--------------')
+    for model in car_types[make].items():
+      print('{} available in '.format(model[0]), end='')
+      for color in model[1]:
+        print('{}'.format(color), end=', ')
+      print('\b\b.\n')
